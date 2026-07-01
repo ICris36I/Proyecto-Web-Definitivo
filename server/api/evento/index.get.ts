@@ -1,7 +1,11 @@
-import { prisma } from "~~/server/utils/prisma"
-
-export default defineCachedEventHandler(async () => {
-    return await prisma.evento.findMany({
-        orderBy: { id: 'desc' }
-    })
+import { prisma } from '~~/server/utils/prisma'
+export default defineEventHandler(async () => {
+  const eventos = await prisma.evento.findMany({
+    include: {
+      _count: {
+        select: { inscritos: true } //lleva la cuenta de las personas inscritas a cada evento
+      }
+    }
+  })
+  return eventos
 })

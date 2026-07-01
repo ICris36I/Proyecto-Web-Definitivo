@@ -22,10 +22,10 @@ model usuario {
 
 model evento {
   id Int @id @default(autoincrement())
-  titulo String @db.VarChar(30)
+  titulo String @db.VarChar(50)
   fecha DateTime @db.Timestamp()
-  lugar String @db.VarChar(30)
-  imagen Int? 
+  lugar String @db.VarChar(50)
+  imagen String? 
   valor Float
   inscritos inscrito[]
 }

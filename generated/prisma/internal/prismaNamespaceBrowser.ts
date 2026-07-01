@@ -135,7 +135,8 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 export const eventoOrderByRelevanceFieldEnum = {
   titulo: 'titulo',
-  lugar: 'lugar'
+  lugar: 'lugar',
+  imagen: 'imagen'
 } as const
 
 export type eventoOrderByRelevanceFieldEnum = (typeof eventoOrderByRelevanceFieldEnum)[keyof typeof eventoOrderByRelevanceFieldEnum]

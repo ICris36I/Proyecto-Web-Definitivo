@@ -28,13 +28,11 @@ export type AggregateEvento = {
 
 export type EventoAvgAggregateOutputType = {
   id: number | null
-  imagen: number | null
   valor: number | null
 }
 
 export type EventoSumAggregateOutputType = {
   id: number | null
-  imagen: number | null
   valor: number | null
 }
 
@@ -43,7 +41,7 @@ export type EventoMinAggregateOutputType = {
   titulo: string | null
   fecha: Date | null
   lugar: string | null
-  imagen: number | null
+  imagen: string | null
   valor: number | null
 }
 
@@ -52,7 +50,7 @@ export type EventoMaxAggregateOutputType = {
   titulo: string | null
   fecha: Date | null
   lugar: string | null
-  imagen: number | null
+  imagen: string | null
   valor: number | null
 }
 
@@ -69,13 +67,11 @@ export type EventoCountAggregateOutputType = {
 
 export type EventoAvgAggregateInputType = {
   id?: true
-  imagen?: true
   valor?: true
 }
 
 export type EventoSumAggregateInputType = {
   id?: true
-  imagen?: true
   valor?: true
 }
 
@@ -198,7 +194,7 @@ export type EventoGroupByOutputType = {
   titulo: string
   fecha: Date
   lugar: string
-  imagen: number | null
+  imagen: string | null
   valor: number
   _count: EventoCountAggregateOutputType | null
   _avg: EventoAvgAggregateOutputType | null
@@ -230,7 +226,7 @@ export type eventoWhereInput = {
   titulo?: Prisma.StringFilter<"evento"> | string
   fecha?: Prisma.DateTimeFilter<"evento"> | Date | string
   lugar?: Prisma.StringFilter<"evento"> | string
-  imagen?: Prisma.IntNullableFilter<"evento"> | number | null
+  imagen?: Prisma.StringNullableFilter<"evento"> | string | null
   valor?: Prisma.FloatFilter<"evento"> | number
   inscritos?: Prisma.InscritoListRelationFilter
 }
@@ -254,7 +250,7 @@ export type eventoWhereUniqueInput = Prisma.AtLeast<{
   titulo?: Prisma.StringFilter<"evento"> | string
   fecha?: Prisma.DateTimeFilter<"evento"> | Date | string
   lugar?: Prisma.StringFilter<"evento"> | string
-  imagen?: Prisma.IntNullableFilter<"evento"> | number | null
+  imagen?: Prisma.StringNullableFilter<"evento"> | string | null
   valor?: Prisma.FloatFilter<"evento"> | number
   inscritos?: Prisma.InscritoListRelationFilter
 }, "id">
@@ -281,7 +277,7 @@ export type eventoScalarWhereWithAggregatesInput = {
   titulo?: Prisma.StringWithAggregatesFilter<"evento"> | string
   fecha?: Prisma.DateTimeWithAggregatesFilter<"evento"> | Date | string
   lugar?: Prisma.StringWithAggregatesFilter<"evento"> | string
-  imagen?: Prisma.IntNullableWithAggregatesFilter<"evento"> | number | null
+  imagen?: Prisma.StringNullableWithAggregatesFilter<"evento"> | string | null
   valor?: Prisma.FloatWithAggregatesFilter<"evento"> | number
 }
 
@@ -289,7 +285,7 @@ export type eventoCreateInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen?: number | null
+  imagen?: string | null
   valor: number
   inscritos?: Prisma.inscritoCreateNestedManyWithoutEventoInput
 }
@@ -299,7 +295,7 @@ export type eventoUncheckedCreateInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen?: number | null
+  imagen?: string | null
   valor: number
   inscritos?: Prisma.inscritoUncheckedCreateNestedManyWithoutEventoInput
 }
@@ -308,7 +304,7 @@ export type eventoUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
   inscritos?: Prisma.inscritoUpdateManyWithoutEventoNestedInput
 }
@@ -318,7 +314,7 @@ export type eventoUncheckedUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
   inscritos?: Prisma.inscritoUncheckedUpdateManyWithoutEventoNestedInput
 }
@@ -328,7 +324,7 @@ export type eventoCreateManyInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen?: number | null
+  imagen?: string | null
   valor: number
 }
 
@@ -336,7 +332,7 @@ export type eventoUpdateManyMutationInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -345,7 +341,7 @@ export type eventoUncheckedUpdateManyInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -366,7 +362,6 @@ export type eventoCountOrderByAggregateInput = {
 
 export type eventoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  imagen?: Prisma.SortOrder
   valor?: Prisma.SortOrder
 }
 
@@ -390,7 +385,6 @@ export type eventoMinOrderByAggregateInput = {
 
 export type eventoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  imagen?: Prisma.SortOrder
   valor?: Prisma.SortOrder
 }
 
@@ -403,12 +397,8 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type FloatFieldUpdateOperationsInput = {
@@ -445,7 +435,7 @@ export type eventoCreateWithoutInscritosInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen?: number | null
+  imagen?: string | null
   valor: number
 }
 
@@ -454,7 +444,7 @@ export type eventoUncheckedCreateWithoutInscritosInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen?: number | null
+  imagen?: string | null
   valor: number
 }
 
@@ -478,7 +468,7 @@ export type eventoUpdateWithoutInscritosInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -487,7 +477,7 @@ export type eventoUncheckedUpdateWithoutInscritosInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  imagen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -560,7 +550,7 @@ export type $eventoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     titulo: string
     fecha: Date
     lugar: string
-    imagen: number | null
+    imagen: string | null
     valor: number
   }, ExtArgs["result"]["evento"]>
   composites: {}
@@ -936,7 +926,7 @@ export interface eventoFieldRefs {
   readonly titulo: Prisma.FieldRef<"evento", 'String'>
   readonly fecha: Prisma.FieldRef<"evento", 'DateTime'>
   readonly lugar: Prisma.FieldRef<"evento", 'String'>
-  readonly imagen: Prisma.FieldRef<"evento", 'Int'>
+  readonly imagen: Prisma.FieldRef<"evento", 'String'>
   readonly valor: Prisma.FieldRef<"evento", 'Float'>
 }
     
